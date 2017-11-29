@@ -1,0 +1,1 @@
+# Behat 3 JSON formatter
