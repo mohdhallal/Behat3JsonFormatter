@@ -432,7 +432,7 @@ class Formatter implements FormatterInterface
 
     public function getName()
     {
-        return 'json-formatter';
+        return 'json_formatter';
     }
 
 
