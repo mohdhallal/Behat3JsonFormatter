@@ -9,12 +9,8 @@ use Behat\Testwork\ServiceContainer\Extension;
 use Behat\Testwork\ServiceContainer\ExtensionManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-/**
- * Class MultilingualExtension.
- *
- * @package Behat\MultilingualExtension\ServiceContainer
- */
-class MultilingualExtension implements Extension
+
+class Behat3JsonExtension implements Extension
 {
     /**
      * {@inheritdoc}
