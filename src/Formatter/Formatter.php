@@ -1,6 +1,6 @@
 <?php
 
-namespace gturkalanov\Behat3JsonFormatter\Formatter;
+namespace gturkalanov\Behat3JsonExtension\Formatter;
 
 use Behat\Behat\EventDispatcher\Event as BehatEvent;
 use Behat\Behat\Tester\Result;

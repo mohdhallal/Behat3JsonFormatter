@@ -1,27 +1,23 @@
 {
-  "name": "gturkalanov/behat-3-json-formatter",
-  "description": "Behat 3 formatter for json results",
-  "keywords": ["behat", "json", "cucumber", "formatter"],
-  "homepage": "https://github.com/Vanare/behat-cucumber-formatter",
+  "name": "gturkalanov/behat-3-json-extension",
+  "type": "behat-extension",
+  "description": "Behat extension for JSON output",
+  "keywords": ["drupal", "web", "test", "behat", "testing", "extension", "json", "formatter"],
   "license": "MIT",
-  "authors": [
-    {
-      "name": "Georgi Tarkalanov",
-      "email": "g.turkalanov@gmail.com"
-    }
-  ],
+  "authors": [{
+    "name": "Georgi Tarkalanov",
+    "email": "g.turkalanov@gmail.com"
+  }],
   "require": {
     "behat/environment-loader": "1.*",
-    "behat/behat": "~3.0",
-    "php": ">=5.5.0",
-    "webignition/json-pretty-print": "^0.1.0"
-  },
-  "config": {
-    "bin-dir": "bin"
+    "webignition/json-pretty-print":   "dev-master"
   },
   "autoload": {
     "psr-4": {
-      "gturkalanov\\Behat3JsonFormatter\\": "src/"
+      "gturkalanov\\Behat3JsonExtension\\": "src/"
     }
+  },
+  "config": {
+    "bin-dir": "bin"
   }
 }
