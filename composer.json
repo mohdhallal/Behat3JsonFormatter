@@ -10,7 +10,7 @@
   }],
   "require": {
     "behat/environment-loader": "1.*",
-    "webignition/json-pretty-print": "dev-master"
+    "webignition/json-pretty-print": "^0.1.0"
   },
   "autoload": {
     "psr-4": {
