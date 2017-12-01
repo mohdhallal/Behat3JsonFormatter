@@ -1,14 +1,15 @@
 <?php
 /**
- * @author Georgi Tarkalanov, <g.turkalanov@gmail.com>
+ * @author George Tarkalanov, <g.turkalanov@gmail.com>
  */
+
 namespace gturkalanov\Behat3JsonExtension\ServiceContainer;
 
-use Behat\EnvironmentLoader;
 use Behat\Testwork\ServiceContainer\Extension;
 use Behat\Testwork\ServiceContainer\ExtensionManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Symfony\Component\DependencyInjection\Definition;
 
 class Behat3JsonExtension implements Extension
 {
@@ -30,8 +31,10 @@ class Behat3JsonExtension implements Extension
      */
     public function load(ContainerBuilder $container, array $config)
     {
-        $loader = new EnvironmentLoader($this, $container, $config);
-        $loader->load();
+        $definition = new Definition("gturkalanov\\Behat3JsonExtension\\Formatter\\Formatter");
+        $container->setDefinition("json.formatter", $definition)
+            ->addTag("output.formatter");
+
     }
     /**
      * {@inheritdoc}

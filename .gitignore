@@ -1,5 +1,7 @@
 vendor
 bin
 composer.lock
+features
+behat.yml
 .DS_Store
 */.DS_Store

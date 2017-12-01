@@ -1,31 +1,21 @@
 <?php
 
-namespace gturkalanov\Behat3JsonFormatter;
+/**
+ * @author George Tarkalanov
+ * Date: 1.12.17
+ * Time: 14:10
+ */
 
-use Behat\Testwork\Output\Exception\BadOutputPathException;
-use Behat\Testwork\Output\Printer\OutputPrinter as OutputPrinterInterface;
+namespace gturkalanov\Behat3JsonExtension\Printer;
 
-class FileOutputPrinter implements OutputPrinterInterface
+use Behat\Testwork\Output\Printer\OutputPrinter as PrinterInterface;
+
+class FileOutputPrinter implements PrinterInterface
 {
     /**
-     * @var string
+     * @var
      */
-    private $path;
-
-    /**
-     * @var string
-     */
-    private $filename;
-
-    /**
-     * @param $filename
-     * @param $path
-     */
-    public function __construct($filename, $path)
-    {
-        $this->filename = $filename;
-        $this->setOutputPath($path);
-    }
+    private $outputPath;
 
     /**
      * Sets output path.
@@ -34,28 +24,7 @@ class FileOutputPrinter implements OutputPrinterInterface
      */
     public function setOutputPath($path)
     {
-        if (!file_exists($path)) {
-            if (!mkdir($path, 0755, true)) {
-                throw new BadOutputPathException(
-                    sprintf(
-                        'Output path %s does not exist and could not be created!',
-                        $path
-                    ),
-                    $path
-                );
-            }
-        } else {
-            if (!is_dir($path)) {
-                throw new BadOutputPathException(
-                    sprintf(
-                        'The argument to `output` is expected to the a directory, but got %s!',
-                        $path
-                    ),
-                    $path
-                );
-            }
-        }
-        $this->path = $path;
+        // TODO: Implement setOutputPath() method.
     }
 
     /**
@@ -67,7 +36,7 @@ class FileOutputPrinter implements OutputPrinterInterface
      */
     public function getOutputPath()
     {
-        return $this->path;
+        return $this->outputPath;
     }
 
     /**
@@ -77,6 +46,7 @@ class FileOutputPrinter implements OutputPrinterInterface
      */
     public function setOutputStyles(array $styles)
     {
+        // TODO: Implement setOutputStyles() method.
     }
 
     /**
@@ -88,6 +58,7 @@ class FileOutputPrinter implements OutputPrinterInterface
      */
     public function getOutputStyles()
     {
+        // TODO: Implement getOutputStyles() method.
     }
 
     /**
@@ -97,6 +68,7 @@ class FileOutputPrinter implements OutputPrinterInterface
      */
     public function setOutputDecorated($decorated)
     {
+        // TODO: Implement setOutputDecorated() method.
     }
 
     /**
@@ -108,44 +80,39 @@ class FileOutputPrinter implements OutputPrinterInterface
      */
     public function isOutputDecorated()
     {
+        return true;
     }
 
     /**
      * Sets output verbosity level.
      *
-     * @param int $level
+     * @param integer $level
      */
     public function setOutputVerbosity($level)
     {
+        // TODO: Implement setOutputVerbosity() method.
     }
 
     /**
      * Returns output verbosity level.
      *
-     * @return int
+     * @return integer
      *
      * @deprecated since 3.1, to be removed in 4.0
      */
     public function getOutputVerbosity()
     {
-        return 0;
+        // TODO: Implement getOutputVerbosity() method.
     }
 
     /**
      * Writes message(s) to output stream.
      *
      * @param string|array $messages message or array of messages
-     * @param bool         $append
      */
-    public function write($messages, $append = false)
+    public function write($messages)
     {
-        $file = $this->getOutputPath().DIRECTORY_SEPARATOR.$this->filename;
-
-        if ($append) {
-            file_put_contents($file, $messages, FILE_APPEND);
-        } else {
-            file_put_contents($file, $messages);
-        }
+        // TODO: Implement write() method.
     }
 
     /**
@@ -155,7 +122,7 @@ class FileOutputPrinter implements OutputPrinterInterface
      */
     public function writeln($messages = '')
     {
-        $this->write($messages, true);
+        // TODO: Implement writeln() method.
     }
 
     /**
@@ -163,5 +130,6 @@ class FileOutputPrinter implements OutputPrinterInterface
      */
     public function flush()
     {
+        // TODO: Implement flush() method.
     }
 }

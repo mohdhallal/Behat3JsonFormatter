@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author George Tarkalanov, <g.turkalanov@gmail.com>
+ */
 
 namespace gturkalanov\Behat3JsonExtension\Formatter;
 
