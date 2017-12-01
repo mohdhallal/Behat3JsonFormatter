@@ -51,6 +51,6 @@ Activate the extension by specifying its class in your **behat.yml**:
             
 # Extension configuration
 
-* *prettify* - Define if the output of the console is one liner or prettified json
-* *file_name* - If this parameter is set there will be no console output but the result will be saved in json file with name - your input here
-* *path* - There is a default path set **build/json_results** . You can change it here.
+* **prettify** - Define if the output of the console is one liner or prettified json
+* **file_name** - If this parameter is set there will be no console output but the result will be saved in json file with name - your input here
+* **path** - There is a default path set **build/json_results** . You can change it here.
