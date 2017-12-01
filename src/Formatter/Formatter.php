@@ -75,10 +75,24 @@ class Formatter implements FormatterInterface
     private $timer;
 
     /**
-     *
+     * @var
      */
-    function __construct(){
-        $this->printer = new FileOutputPrinter();
+    private $prettify;
+
+    /**
+     * @var
+     */
+    private $file_name;
+
+    /**
+     * @param $prettify - true / false
+     * @param $file_name - file name / false
+     * @param $path - relative path
+     */
+    function __construct($prettify,$file_name,$path){
+        $this->prettify = $prettify;
+        $this->file_name = $file_name;
+        $this->printer = new FileOutputPrinter($file_name,$path);
         $this->timer = new Timer();
         $this->memory = new Memory();
     }
@@ -206,6 +220,16 @@ class Formatter implements FormatterInterface
         return $this->timerScenario;
     }
 
+    public function getPrettify()
+    {
+        return $this->prettify;
+    }
+
+    public function getFileName()
+    {
+        return $this->file_name;
+    }
+
     /**
      * Triggers before running tests.
      *
@@ -240,8 +264,20 @@ class Formatter implements FormatterInterface
     {
         $json = $this->buildJson();
         $json = $this->formatJson($json);
-        $this->json = $json;
-        echo $this->json."\n";
+        if($this->file_name == "false"){
+            if($this->prettify == "true"){
+                $this->json = json_decode($json);
+                echo json_encode($this->json, JSON_PRETTY_PRINT)."\n";
+            } else {
+                $this->json = $json;
+                echo $this->json."\n";
+            }
+        } else {
+            $this->json = json_decode($json);
+            $pretty_json = json_encode($this->json, JSON_PRETTY_PRINT)."\n";
+            $this->printer->write($pretty_json);
+        }
+
     }
 
     /**
@@ -307,7 +343,6 @@ class Formatter implements FormatterInterface
             $this->currentScenario['result'] = 'failed';
         }
         $this->currentScenario['duration'] = round($stopTime - $this->getTimerScenario(),2);
-        var_dump($this->currentScenario['duration']);
         $this->currentScenario['steps'] = $this->currentSteps;
         $this->currentScenarios[] = $this->currentScenario;
     }

@@ -32,6 +32,9 @@ class Behat3JsonExtension implements Extension
     public function load(ContainerBuilder $container, array $config)
     {
         $definition = new Definition("gturkalanov\\Behat3JsonExtension\\Formatter\\Formatter");
+        $definition->addArgument($config['prettify']);
+        $definition->addArgument($config['file_name']);
+        $definition->addArgument($config['path']);
         $container->setDefinition("json.formatter", $definition)
             ->addTag("output.formatter");
 
@@ -47,6 +50,9 @@ class Behat3JsonExtension implements Extension
      */
     public function configure(ArrayNodeDefinition $builder)
     {
+        $builder->children()->scalarNode("prettify")->defaultValue("false");
+        $builder->children()->scalarNode("file_name")->defaultValue("false");
+        $builder->children()->scalarNode("path")->defaultValue("build/json_results");
 
     }
 }

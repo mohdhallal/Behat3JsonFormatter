@@ -9,13 +9,29 @@
 namespace gturkalanov\Behat3JsonExtension\Printer;
 
 use Behat\Testwork\Output\Printer\OutputPrinter as PrinterInterface;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class FileOutputPrinter implements PrinterInterface
 {
+
     /**
-     * @var
+     * @var string
      */
-    private $outputPath;
+    private $path;
+    /**
+     * @var string
+     */
+    private $filename;
+
+    /**
+     * @param $filename
+     * @param $path
+     */
+    public function __construct($filename, $path)
+    {
+        $this->filename = $filename;
+        $this->setOutputPath($path);
+    }
 
     /**
      * Sets output path.
@@ -24,7 +40,29 @@ class FileOutputPrinter implements PrinterInterface
      */
     public function setOutputPath($path)
     {
-        // TODO: Implement setOutputPath() method.
+        if (!file_exists($path)) {
+            if (!mkdir($path, 0755, true)) {
+                throw new Exception(
+                    sprintf(
+                        'Output path %s does not exist and could not be created!',
+                        $path
+                    ),
+                    $path
+                );
+            }
+        } else {
+            if (!is_dir($path)) {
+                throw new Exception(
+                    sprintf(
+                        'The argument to `output` is expected to the a directory, but got %s!',
+                        $path
+                    ),
+                    $path
+                );
+            }
+        }
+        $this->path = $path;
+
     }
 
     /**
@@ -36,7 +74,19 @@ class FileOutputPrinter implements PrinterInterface
      */
     public function getOutputPath()
     {
-        return $this->outputPath;
+        return $this->path;
+    }
+
+    /**
+     * Returns output path.
+     *
+     * @return null|string
+     *
+     * @deprecated since 3.1, to be removed in 4.0
+     */
+    public function getWorkAroundPath()
+    {
+        return $this->path;
     }
 
     /**
@@ -112,7 +162,9 @@ class FileOutputPrinter implements PrinterInterface
      */
     public function write($messages)
     {
-        // TODO: Implement write() method.
+        $file = $this->getWorkAroundPath().DIRECTORY_SEPARATOR.$this->filename;
+        file_put_contents($file, $messages);
+
     }
 
     /**
