@@ -35,9 +35,7 @@ Install with **composer.json:**
 
 # Basic usage
 
-Activate the extension by specifying its class in your behat.yml:
-
-# behat.yml
+Activate the extension by specifying its class in your **behat.yml**:
 
     default:
       suites:
@@ -47,6 +45,12 @@ Activate the extension by specifying its class in your behat.yml:
         json_formatter:
         
       extensions:
-        ggturkalanov\Behat3JsonExtension:
+        gturkalanov\Behat3JsonExtension:
             prettify: true
             file_name: result.json
+            
+# Extension configuration
+
+* *prettify* - Define if the output of the console is one liner or prettified json
+* *file_name* - If this parameter is set there will be no console output but the result will be saved in json file with name - your input here
+* *path* - There is a default path set **build/json_results** . You can change it here.
