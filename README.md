@@ -2,6 +2,10 @@
 
 Behat 3 extension for generating JSON results
 
+
+![Example of JSON formatter](example.png)
+
+
 # How ?
 * The tool can be installed easily with composer.
 * Defining the formatter in the behat.yml file
@@ -47,7 +51,6 @@ Activate the extension by specifying its class in your **behat.yml**:
       extensions:
         gturkalanov\Behat3JsonExtension:
             prettify: true
-            file_name: result.json
             
 # Extension configuration
 
