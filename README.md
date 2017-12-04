@@ -3,7 +3,7 @@
 Behat 3 extension for generating JSON results
 
 
-<img src="example.png" width="600" height="1000">
+<img src="example.png" width="500" height="800">
 
 
 # How ?
