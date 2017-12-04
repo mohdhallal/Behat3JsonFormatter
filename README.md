@@ -29,7 +29,7 @@ Install with **composer.json:**
     {
         "require": {
             "behat/behat": "3.*@stable",
-            "emuse/behat-html-formatter": "0.1.*",
+            "gturkalanov/behat-3-json-formatter": "dev-master",
         },
         "minimum-stability": "dev",
         "config": {
