@@ -3,7 +3,7 @@
 Behat 3 extension for generating JSON results
 
 
-![Example of JSON formatter](example.png = 600x1100 )
+<img src="example.png" width="600" height="1100">
 
 
 # How ?
