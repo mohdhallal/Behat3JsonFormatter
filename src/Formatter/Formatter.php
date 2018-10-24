@@ -85,16 +85,22 @@ class Formatter implements FormatterInterface
     private $file_name;
 
     /**
+     * @var
+     */
+    private $cli_output;
+
+    /**
      * @param $prettify - true / false
      * @param $file_name - file name / false
      * @param $path - relative path
      */
-    function __construct($prettify,$file_name,$path){
+    function __construct($prettify,$file_name,$path,$cli_output){
         $this->prettify = $prettify;
         $this->file_name = $file_name;
         $this->printer = new FileOutputPrinter($file_name,$path);
         $this->timer = new Timer();
         $this->memory = new Memory();
+        $this->cli_output = $cli_output;
     }
 
     /**
@@ -267,10 +273,10 @@ class Formatter implements FormatterInterface
         if($this->file_name == "false"){
             if($this->prettify == "true"){
                 $this->json = json_decode($json);
-                echo json_encode($this->json, JSON_PRETTY_PRINT)."\n";
+                $this->cli_output->writeln(json_encode($this->json, JSON_PRETTY_PRINT));
             } else {
                 $this->json = $json;
-                echo $this->json."\n";
+                $this->cli_output->writeln($this->json);
             }
         } else {
             $this->json = json_decode($json);

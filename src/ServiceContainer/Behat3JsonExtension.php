@@ -35,6 +35,7 @@ class Behat3JsonExtension implements Extension
         $definition->addArgument($config['prettify']);
         $definition->addArgument($config['file_name']);
         $definition->addArgument($config['path']);
+        $definition->addArgument($container->get('cli.output'));
         $container->setDefinition("json.formatter", $definition)
             ->addTag("output.formatter");
 
